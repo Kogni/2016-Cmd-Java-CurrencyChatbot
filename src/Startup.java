@@ -10,7 +10,6 @@ public class Startup {
     }
 
     private static void lesLinje(String textInput) { // motta tekst
-	// System.out.println("Du sier: " + textInput);
 	String currency = textInput;
 	if ((textInput.contains("USD")) || (textInput.contains("$")) || (textInput.contains("US dollar"))
 		|| (textInput.contains("amerikanske dollar"))) {
@@ -23,11 +22,9 @@ public class Startup {
 		|| (textInput.contains("svenska kronor"))) {
 	    currency = "SEK";
 	}
-	if ((textInput.contains("EUR")) || (textInput.contains("euro"))
-		|| (textInput.contains("€"))) {
+	if ((textInput.contains("EUR")) || (textInput.contains("euro")) || (textInput.contains("€"))) {
 	    currency = "EUR";
 	}
-	// System.out.println("currency=" + currency);
 	double value = new Brain_Currency().GetCurrency(currency);
 	System.out.println("Valutakursen for " + currency + " er " + value);
     }

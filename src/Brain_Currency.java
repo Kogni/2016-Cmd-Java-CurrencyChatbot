@@ -13,22 +13,7 @@ public class Brain_Currency {
     HttpURLConnection connection;
     StringBuffer DataImported = new StringBuffer();
 
-    public Brain_Currency() {
-	// this.Class_Controller = Class_Controller;
-
-    }
-
     public double GetCurrency(String currency) {
-	if (currency.contains("USD")) {
-	    return GetUSD(currency);
-	}
-	return GetUSD(currency);
-	// System.out.println("Gjenkjente ikke valuta " + currency);
-	// return 0;
-    }
-
-    public double GetUSD(String currency) {
-
 	try {
 	    url = new URL("http://themoneyconverter.com/" + currency + "/NOK.aspx");
 
@@ -50,18 +35,11 @@ public class Brain_Currency {
 	    try {
 		String Buffer = DataImported.toString().toLowerCase();
 		String Temp = Buffer;
-		// System.out.println("0 " + Temp.indexOf("<div id='tmc-header'>"));
 		Temp = Temp.substring(Temp.indexOf("<div id='tmc-header'>") + "<div id='tmc-header'>".length());
-		// System.out.println("A " + Temp);
 		Temp = Temp.substring(Temp.indexOf("latest exchange rates:") + "latest exchange rates:".length());
-		// System.out.println("B " + Temp);
 		Temp = Temp.substring(Temp.indexOf(" = ") + " = ".length());
-		// System.out.println("C " + Temp);
-		// Temp = Temp.substring( Temp.indexOf("1 United States Dollar = ")+"1 United States Dollar = ".length() );
-		// System.out.println("D " + Temp);
 		Temp = Temp.substring(0, Temp.indexOf(" norwegian krone"));
 		Double currValue = 0.0;
-		// System.out.println("E " + Temp);
 		try {
 		    currValue = Double.parseDouble(Temp);
 		    return currValue;
